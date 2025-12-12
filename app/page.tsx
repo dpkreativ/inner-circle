@@ -13,12 +13,15 @@ import {
   Crown,
   Sun,
   Anchor,
-  MoveRight,
   ChevronLeft,
   ChevronRight,
+  Calendar,
 } from "lucide-react";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { AnimatedBackground } from "@/components/common/AnimatedBackground";
+import { SectionBadge } from "@/components/common/SectionBadge";
+import { Marquee } from "@/components/common/Marquee";
 
 export default function Home() {
   // Hero Scroll Parallax
@@ -55,25 +58,7 @@ export default function Home() {
     >
       {/* --- HERO SECTION --- */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 px-4 md:px-6 overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-orange/20 rounded-full blur-[80px] md:blur-[120px]"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-            className="absolute bottom-[-10%] right-[-10%] w-[300px] h-[300px] md:w-[700px] md:h-[700px] bg-brand-yellow/10 rounded-full blur-[80px] md:blur-[120px]"
-          />
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
-        </div>
+        <AnimatedBackground />
 
         {/* Hero Content */}
         <motion.div
@@ -87,11 +72,7 @@ export default function Home() {
             variants={fadeInUp}
             className="flex items-center justify-center mb-6 md:mb-8"
           >
-            <div className="px-3 py-1.5 md:px-4 md:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl">
-              <span className="text-brand-orange text-[10px] md:text-xs font-medium uppercase tracking-[0.2em]">
-                Inner Circle Brand Guide
-              </span>
-            </div>
+            <SectionBadge>Inner Circle</SectionBadge>
           </motion.div>
 
           {/* OPTIMIZED TYPOGRAPHY FOR MOBILE */}
@@ -101,11 +82,11 @@ export default function Home() {
           >
             Where <span className="font-light text-white/70">Stories</span>,{" "}
             <br className="hidden md:block" />
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50">
+            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-b from-white via-white to-white/50">
               Community
             </span>
             , & Purpose <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-orange via-brand-yellow to-brand-orange bg-[length:200%_auto] animate-gradient">
+            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-r from-brand-orange via-brand-yellow to-brand-orange bg-[length:200%_auto] animate-gradient">
               Become Legacy.
             </span>
           </motion.h1>
@@ -146,25 +127,7 @@ export default function Home() {
       </section>
 
       {/* --- INFINITE SCROLL MARQUEE --- */}
-      <section className="py-4 md:py-6 border-y border-white/5 bg-black/50 backdrop-blur-md relative overflow-hidden">
-        <div className="flex overflow-hidden group">
-          <motion.div
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 30, ease: "linear", repeat: Infinity }}
-            className="flex gap-12 md:gap-24 whitespace-nowrap items-center pr-12 md:pr-24"
-          >
-            {[...brandPillars, ...brandPillars].map((pillar, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-4 md:gap-6 text-xs md:text-base font-medium text-white/40 uppercase tracking-[0.15em] hover:text-white transition-colors cursor-default"
-              >
-                <Sparkles size={12} className="text-brand-orange" />
-                {pillar}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <Marquee items={brandPillars} />
 
       {/* --- GENERATIONAL TIERS CAROUSEL --- */}
       <section className="py-20 md:py-32 relative group/carousel">
@@ -347,34 +310,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- BRAND VIDEO SHOWCASE --- */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-40 pt-10">
-        <div className="mb-10 md:mb-16 text-center border-t border-white/5 pt-10 md:pt-20">
-          <span className="text-zinc-500 font-medium uppercase tracking-[0.2em] text-xs mb-4 block">
-            The Brand in Motion
-          </span>
-          <h2 className="text-3xl md:text-6xl font-medium tracking-tighter text-white">
-            Visual Identity
-          </h2>
-        </div>
-
+      {/* --- INNER CIRCLE CONNECT SECTION --- */}
+      <section className="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-32">
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full aspect-video max-w-6xl mx-auto rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-white/5 shadow-[0_0_120px_rgba(0,0,0,0.8)] bg-[#050505]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-brand-orange/20 via-black to-black border border-brand-orange/30 overflow-hidden"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-700"
-          >
-            <source src="/videos/logo-animation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+          {/* Background Elements */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-orange/20 rounded-full blur-[120px]" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 backdrop-blur-md mb-6">
+                <Calendar size={16} className="text-brand-orange" />
+                <span className="text-brand-orange text-xs font-bold uppercase tracking-widest">
+                  13th December 2025
+                </span>
+              </div>
+
+              <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6">
+                Inner Circle{" "}
+                <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
+                  Connect
+                </span>
+              </h2>
+
+              <p className="text-lg md:text-xl text-zinc-300 mb-8 leading-relaxed">
+                Join us for the inaugural Inner Circle Connect event. A
+                multi-generational gathering designed to spark connections,
+                share wisdom, and build lasting relationships across age groups.
+              </p>
+
+              <Link href="/connect">
+                <button className="group px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-brand-orange hover:text-white transition-all duration-300 flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                  <span>Learn More About Connect</span>
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
+                </button>
+              </Link>
+            </div>
+
+            {/* Right: Highlights */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: "Networking", value: "Cross-Gen" },
+                { label: "Insights", value: "Life-Changing" },
+                { label: "Community", value: "Founding Set" },
+                { label: "Impact", value: "Legacy Building" },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-6 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10"
+                >
+                  <div className="text-brand-orange text-sm font-bold uppercase tracking-widest mb-2">
+                    {item.label}
+                  </div>
+                  <div className="text-white text-lg font-medium">
+                    {item.value}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </section>
     </main>

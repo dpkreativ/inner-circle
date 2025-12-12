@@ -1,6 +1,8 @@
 "use client";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import Image from "next/image";
+import { SpotlightCard } from "@/components/cards/SpotlightCard";
 import {
   Smartphone,
   Users,
@@ -23,7 +25,6 @@ import {
   Anchor,
   Megaphone,
   Eye,
-  Image,
   Globe,
 } from "lucide-react";
 
@@ -165,7 +166,7 @@ export default function AboutUs() {
                 transition={{ delay: i * 0.1 }}
                 className="group relative p-6 rounded-[2rem] border border-white/5 hover:border-brand-orange/30 hover:bg-white/5 transition-all duration-500 cursor-default flex flex-col justify-center items-center h-48"
               >
-                <h4 className="text-3xl lg:text-4xl xl:text-5xl font-medium text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-500 group-hover:to-white transition-all duration-500 w-full overflow-visible">
+                <h4 className="text-3xl lg:text-4xl xl:text-5xl font-medium text-transparent bg-clip-text px-3 bg-gradient-to-b from-white to-zinc-500 group-hover:to-white transition-all duration-500 w-full overflow-visible">
                   {item.word}
                   <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     .
@@ -240,7 +241,7 @@ export default function AboutUs() {
           className="text-4xl md:text-7xl font-medium tracking-tighter mb-6 md:mb-8 leading-tight"
         >
           The Engine <span className="text-zinc-500">&</span> <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-yellow">
+          <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
             The Architects.
           </span>
         </motion.h1>
@@ -276,7 +277,7 @@ export default function AboutUs() {
                   <Image
                     src={company.logo}
                     alt={company.title}
-                    fill
+                    fill={true}
                     className="object-contain"
                     unoptimized
                   />
@@ -502,50 +503,6 @@ const values = [
   { title: "Legacy", icon: Gem, wide: false },
   { title: "Inclusivity", icon: Fingerprint, wide: true },
 ];
-
-// --- SPOTLIGHT CARD COMPONENT ---
-function SpotlightCard({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      onMouseMove={handleMouseMove}
-      className={`group relative border border-white/10 bg-zinc-900/30 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 hover:border-white/20 transition-colors duration-500 ${className}`}
-    >
-      <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[2rem] md:rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(249, 115, 22, 0.1),
-              transparent 80%
-            )
-          `,
-        }}
-      />
-      <div className="relative h-full">{children}</div>
-    </motion.div>
-  );
-}
 
 // --- DATA: COMPANIES ---
 const companies = [

@@ -5,29 +5,40 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 
-const navItems = [
+interface NavItem {
+  name: string;
+  path: string;
+  children?: NavItem[];
+}
+
+const navItems: NavItem[] = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
   { name: "Projects", path: "/projects" },
-  { name: "Brand Guide", path: "/brand" },
+  {
+    name: "Brand Guide",
+    path: "/brand",
+    children: [
+      { name: "Logo", path: "/brand/logo" },
+      { name: "Colors", path: "/brand/colors" },
+      { name: "Typography", path: "/brand/typography" },
+      { name: "Merch", path: "/brand/merch" },
+    ],
+  },
   { name: "Inner Circle Connect", path: "/connect" },
-  // { name: "Mission", path: "/mission" },
-  // { name: "Organization", path: "/organization" },
-  // { name: "Logo", path: "/logo" },
-  // { name: "Colors", path: "/colors" },
-  // { name: "Typography", path: "/typography" },
-  // { name: "Merch", path: "/merch" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
+    setActiveDropdown(null);
   }, [pathname]);
 
   // Disable body scroll when menu is open
@@ -48,7 +59,7 @@ export default function Navbar() {
             <Image
               src="/images/logo-white.png"
               alt="Inner Circle Logo"
-              fill
+              fill={true}
               className="object-contain object-left"
               priority
               unoptimized
@@ -59,23 +70,71 @@ export default function Navbar() {
         {/* DESKTOP MENU (Hidden on Mobile) */}
         <ul className="hidden lg:flex gap-8 items-center">
           {navItems.map((item) => {
-            const isActive = pathname === item.path;
+            const isActive =
+              pathname === item.path || pathname.startsWith(item.path + "/");
+            const hasChildren = item.children && item.children.length > 0;
+
             return (
-              <li key={item.path} className="relative">
+              <li
+                key={item.path}
+                className="relative"
+                onMouseEnter={() => hasChildren && setActiveDropdown(item.name)}
+                onMouseLeave={() => hasChildren && setActiveDropdown(null)}
+              >
                 <Link
                   href={item.path}
-                  className={`relative z-10 text-sm font-medium tracking-wide transition-colors ${
+                  className={`relative z-10 text-sm font-medium tracking-wide transition-colors flex items-center gap-1 ${
                     isActive ? "text-white" : "text-zinc-400 hover:text-white"
                   }`}
                 >
                   {item.name}
+                  {hasChildren && (
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${
+                        activeDropdown === item.name ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
                 </Link>
-                {isActive && (
+                {isActive && !hasChildren && (
                   <motion.div
                     layoutId="underline"
                     className="absolute -bottom-2 left-0 w-full h-[1px] bg-brand-orange"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
+                )}
+
+                {/* DROPDOWN MENU */}
+                {hasChildren && (
+                  <AnimatePresence>
+                    {activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-2 min-w-[200px] bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+                      >
+                        {item.children!.map((child) => {
+                          const isChildActive = pathname === child.path;
+                          return (
+                            <Link
+                              key={child.path}
+                              href={child.path}
+                              className={`block px-6 py-3 text-sm transition-colors ${
+                                isChildActive
+                                  ? "bg-brand-orange/10 text-brand-orange"
+                                  : "text-zinc-400 hover:text-white hover:bg-white/5"
+                              }`}
+                            >
+                              {child.name}
+                            </Link>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 )}
               </li>
             );
@@ -104,9 +163,13 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
             <div className="absolute top-1/4 right-0 w-[300px] h-[300px] bg-brand-orange/10 rounded-full blur-[100px]" />
 
-            <ul className="relative z-10 flex flex-col gap-4">
+            <ul className="relative z-10 flex flex-col gap-2">
               {navItems.map((item, i) => {
-                const isActive = pathname === item.path;
+                const isActive =
+                  pathname === item.path ||
+                  pathname.startsWith(item.path + "/");
+                const hasChildren = item.children && item.children.length > 0;
+
                 return (
                   <motion.li
                     key={item.path}
@@ -130,6 +193,29 @@ export default function Navbar() {
                         }`}
                       />
                     </Link>
+
+                    {/* MOBILE SUB-ITEMS */}
+                    {hasChildren && (
+                      <ul className="ml-4 mt-2 space-y-1">
+                        {item.children!.map((child) => {
+                          const isChildActive = pathname === child.path;
+                          return (
+                            <li key={child.path}>
+                              <Link
+                                href={child.path}
+                                className={`block text-sm py-2 px-4 rounded-lg transition-colors ${
+                                  isChildActive
+                                    ? "bg-brand-orange/10 text-brand-orange"
+                                    : "text-zinc-500 hover:text-white hover:bg-white/5"
+                                }`}
+                              >
+                                {child.name}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
                   </motion.li>
                 );
               })}
