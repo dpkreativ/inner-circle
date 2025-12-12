@@ -1,21 +1,23 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Mission', path: '/mission' },
-  { name: 'Logo', path: '/logo' },
-  { name: 'Colors', path: '/colors' },
-  { name: 'Typography', path: '/typography' },
-  { name: 'Merch', path: '/merch' },
-  { name: 'Organization', path: '/organization' },
-  { name: 'Projects', path: '/projects' },
+  { name: "Home", path: "/" },
+  { name: "Inner Circle Connect", path: "/connect" },
+  { name: "Mission", path: "/mission" },
+  { name: "Organization", path: "/organization" },
+  { name: "Brand Guide", path: "/brand" },
+  // { name: "Logo", path: "/logo" },
+  // { name: "Colors", path: "/colors" },
+  // { name: "Typography", path: "/typography" },
+  // { name: "Merch", path: "/merch" },
+  { name: "Projects", path: "/projects" },
 ];
 
 export default function Navbar() {
@@ -30,9 +32,9 @@ export default function Navbar() {
   // Disable body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
   }, [isOpen]);
 
@@ -42,8 +44,8 @@ export default function Navbar() {
         <Link href="/" className="relative z-50">
           {/* LOGO CONTAINER */}
           <div className="relative w-28 h-10 md:w-36 md:h-12 hover:opacity-80 transition-opacity">
-            <Image 
-              src="/images/logo-white.png" 
+            <Image
+              src="/images/logo-white.png"
               alt="Inner Circle Logo"
               fill
               className="object-contain object-left"
@@ -52,16 +54,18 @@ export default function Navbar() {
             />
           </div>
         </Link>
-        
+
         {/* DESKTOP MENU (Hidden on Mobile) */}
         <ul className="hidden lg:flex gap-8 items-center">
           {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
               <li key={item.path} className="relative">
-                <Link 
-                  href={item.path} 
-                  className={`relative z-10 text-sm font-medium tracking-wide transition-colors ${isActive ? 'text-white' : 'text-zinc-400 hover:text-white'}`}
+                <Link
+                  href={item.path}
+                  className={`relative z-10 text-sm font-medium tracking-wide transition-colors ${
+                    isActive ? "text-white" : "text-zinc-400 hover:text-white"
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -78,7 +82,7 @@ export default function Navbar() {
         </ul>
 
         {/* MOBILE TOGGLE BUTTON */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden relative z-50 p-2 text-white hover:text-brand-orange transition-colors"
         >
@@ -101,31 +105,37 @@ export default function Navbar() {
 
             <ul className="relative z-10 flex flex-col gap-4">
               {navItems.map((item, i) => {
-                 const isActive = pathname === item.path;
-                 return (
-                  <motion.li 
+                const isActive = pathname === item.path;
+                return (
+                  <motion.li
                     key={item.path}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05, duration: 0.3 }}
                   >
-                    <Link 
-                      href={item.path} 
-                      className={`group flex items-center justify-between text-2xl font-medium tracking-tight py-2 border-b border-white/5 ${isActive ? 'text-brand-orange' : 'text-zinc-400 hover:text-white'}`}
+                    <Link
+                      href={item.path}
+                      className={`group flex items-center justify-between text-2xl font-medium tracking-tight py-2 border-b border-white/5 ${
+                        isActive
+                          ? "text-brand-orange"
+                          : "text-zinc-400 hover:text-white"
+                      }`}
                     >
                       <span>{item.name}</span>
-                      <ArrowRight 
-                        size={16} 
-                        className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0' : ''}`} 
+                      <ArrowRight
+                        size={16}
+                        className={`opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ${
+                          isActive ? "opacity-100 translate-x-0" : ""
+                        }`}
                       />
                     </Link>
                   </motion.li>
-                )
+                );
               })}
             </ul>
-            
+
             {/* Footer info */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
