@@ -1,8 +1,8 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Tag, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 
 export default function MerchPage() {
   const containerRef = useRef(null);
@@ -75,6 +75,12 @@ export default function MerchPage() {
 }
 
 // --- REUSABLE CAROUSEL COMPONENT (SPOTIFY STYLE OVERLAYS) ---
+interface MerchItem {
+  name: string;
+  desc: string;
+  image: string;
+}
+
 function CarouselSection({
   title,
   subtitle,
@@ -83,7 +89,7 @@ function CarouselSection({
 }: {
   title: string;
   subtitle: string;
-  items: any[];
+  items: MerchItem[];
   isSmall?: boolean;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -166,7 +172,7 @@ function ShowcaseCard({
   item,
   isSmall = false,
 }: {
-  item: any;
+  item: MerchItem;
   isSmall?: boolean;
 }) {
   return (

@@ -6,7 +6,11 @@ import Image from "next/image";
 // Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
 const staggerContainer = {
@@ -91,8 +95,8 @@ export default function LogoPage() {
               </h3>
               <p className="text-zinc-400 leading-relaxed text-xs md:text-sm">
                 The gradient shifts from deep orange (passion) to sunburst
-                yellow (clarity). This symbolizes Growth—the "light bulb
-                moments" when ideas are shared.
+                yellow (clarity). This symbolizes Growth—the &ldquo;light bulb
+                moments&rdquo; when ideas are shared.
               </p>
             </motion.div>
 
@@ -109,7 +113,7 @@ export default function LogoPage() {
                 03
               </span>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                The Integrated 'C'
+                The Integrated &apos;C&apos;
               </h3>
               <p className="text-zinc-400 leading-relaxed text-xs md:text-sm">
                 The letter &apos;C&apos; is built from the same particles as the

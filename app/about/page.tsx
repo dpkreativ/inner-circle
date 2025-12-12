@@ -1,6 +1,6 @@
 "use client";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { SpotlightCard } from "@/components/cards/SpotlightCard";
 import {

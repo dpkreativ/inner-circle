@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 interface SectionBadgeProps {
   children: React.ReactNode;
   className?: string;

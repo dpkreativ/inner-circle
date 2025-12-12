@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import {
-  ArrowRight,
   Users,
   Target,
   Sparkles,
@@ -131,9 +129,9 @@ export default function InnerCircleConnect() {
               className="p-8 md:p-12 rounded-[2rem] bg-gradient-to-b from-white/5 to-transparent border border-white/10 backdrop-blur-sm"
             >
               <p className="text-xl md:text-2xl text-white font-light italic">
-                "It is a platform, a culture, a Life Concierge, and a lifelong
-                support system built to help you rise, evolve, and impact your
-                world."
+                &ldquo;It is a platform, a culture, a Life Concierge, and a
+                lifelong support system built to help you rise, evolve, and
+                impact your world.&rdquo;
               </p>
             </motion.div>
           </motion.div>
@@ -362,8 +360,8 @@ export default function InnerCircleConnect() {
               visibility, and founding-level recognition.
             </p>
             <p className="text-white font-medium">
-              Inner Circle is not a "group." It is a Life Concierge system, a
-              multi-generational family, and a platform built to last.
+              Inner Circle is not a &ldquo;group.&rdquo; It is a Life Concierge
+              system, a multi-generational family, and a platform built to last.
             </p>
           </div>
         </div>

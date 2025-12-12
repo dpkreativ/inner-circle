@@ -1,17 +1,8 @@
 "use client";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { motion } from "framer-motion";
 import { Copy, Check, Palette } from "lucide-react";
 import { useState } from "react";
-
-// --- ANIMATION VARIANTS ---
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const staggerContainer = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
 
 export default function ColorsPage() {
   return (
@@ -98,8 +89,8 @@ export default function ColorsPage() {
             </h3>
             <p className="text-zinc-400 leading-relaxed text-sm md:text-base">
               The transition to bright yellow signifies clarity, innovation, and
-              "light bulb moments." It represents the dawn of a new generation
-              of leaders.
+              &ldquo;light bulb moments.&rdquo; It represents the dawn of a new
+              generation of leaders.
             </p>
           </div>
         </div>
@@ -123,7 +114,15 @@ export default function ColorsPage() {
 }
 
 // --- COLOR CARD COMPONENT ---
-function ColorCard({ color, delay }: { color: any; delay: number }) {
+interface ColorData {
+  name: string;
+  usage: string;
+  hex: string;
+  rgb: string;
+  cmyk: string;
+}
+
+function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
   const [copied, setCopied] = useState<string | null>(null);
 
   const handleCopy = (text: string, type: string) => {

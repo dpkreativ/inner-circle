@@ -1,15 +1,12 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Calendar,
-  Clock,
-  MapPin,
   ArrowRight,
   Radio,
   Zap,
   Users,
   Target,
-  ChevronRight,
   Play,
 } from "lucide-react";
 import { useRef } from "react";
@@ -211,7 +208,14 @@ export default function ProjectsPage() {
 }
 
 // --- COMPONENT: TIMELINE ITEM ---
-function TimelineItem({ item, delay }: { item: any; delay: number }) {
+interface MilestoneItem {
+  date: string;
+  title: string;
+  desc: string;
+  status: string;
+}
+
+function TimelineItem({ item, delay }: { item: MilestoneItem; delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -243,7 +247,20 @@ function TimelineItem({ item, delay }: { item: any; delay: number }) {
 }
 
 // --- COMPONENT: PROJECT CARD ---
-function ProjectCard({ project, delay }: { project: any; delay: number }) {
+interface ProjectItem {
+  title: string;
+  tag: string;
+  desc: string;
+  icon: React.ElementType;
+}
+
+function ProjectCard({
+  project,
+  delay,
+}: {
+  project: ProjectItem;
+  delay: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
