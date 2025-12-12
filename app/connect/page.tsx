@@ -21,29 +21,22 @@ import {
   Lightbulb,
   TrendingUp,
 } from "lucide-react";
+import { fadeInUp, scaleIn, staggerContainer } from "@/lib/motion";
 
-// --- ANIMATION VARIANTS ---
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const staggerContainer = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const scaleIn = {
-  hidden: { scale: 0.9, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const },
-  },
-};
+// --- MAIN PAGE COMPONENT ---
+export default function InnerCircleConnect() {
+  return (
+    <main className="bg-[#050505] min-h-screen text-white overflow-hidden selection:bg-brand-orange/30">
+      <Hero />
+      <Concept />
+      <Bands />
+      <Objectives />
+      <Benefits />
+      <EventDetails />
+      <CTA />
+    </main>
+  );
+}
 
 // --- COMPONENTS ---
 
@@ -59,7 +52,7 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 md:px-6 overflow-hidden pt-20"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 md:px-6 overflow-hidden py-32"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
@@ -538,18 +531,3 @@ const CTA = () => {
     </section>
   );
 };
-
-// --- MAIN PAGE COMPONENT ---
-export default function InnerCircleConnect() {
-  return (
-    <main className="bg-[#050505] min-h-screen text-white overflow-hidden selection:bg-brand-orange/30">
-      <Hero />
-      <Concept />
-      <Bands />
-      <Objectives />
-      <Benefits />
-      <EventDetails />
-      <CTA />
-    </main>
-  );
-}

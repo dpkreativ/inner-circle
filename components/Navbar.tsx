@@ -9,15 +9,16 @@ import { Menu, X, ArrowRight } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "Inner Circle Connect", path: "/connect" },
-  { name: "Mission", path: "/mission" },
-  { name: "Organization", path: "/organization" },
+  { name: "About Us", path: "/about" },
+  { name: "Projects", path: "/projects" },
   { name: "Brand Guide", path: "/brand" },
+  { name: "Inner Circle Connect", path: "/connect" },
+  // { name: "Mission", path: "/mission" },
+  // { name: "Organization", path: "/organization" },
   // { name: "Logo", path: "/logo" },
   // { name: "Colors", path: "/colors" },
   // { name: "Typography", path: "/typography" },
   // { name: "Merch", path: "/merch" },
-  { name: "Projects", path: "/projects" },
 ];
 
 export default function Navbar() {
@@ -39,7 +40,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <>
+    <header>
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent backdrop-blur-sm transition-all duration-300">
         <Link href="/" className="relative z-50">
           {/* LOGO CONTAINER */}
@@ -148,6 +149,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 }
