@@ -19,10 +19,10 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export default function OrganizationPage() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-brand-orange/30 font-sans pt-24 md:pt-32 pb-20 px-4 md:px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-brand-orange/30 font-sans pt-24 md:pt-32 pb-20 px-4 md:px-6 relative overflow-hidden">
       {/* --- BLUEPRINT BACKGROUND --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_20%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_20%,#000_70%,transparent_100%)]"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-brand-orange/10 rounded-full blur-[120px]" />
       </div>
 
@@ -37,7 +37,7 @@ export default function OrganizationPage() {
           variants={fadeInUp}
           className="flex justify-center mb-6 md:mb-8"
         >
-          <div className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl">
+          <div className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-border/50 bg-muted/50 backdrop-blur-xl">
             <span className="text-brand-orange text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">
               Organizational Structure
             </span>
@@ -46,9 +46,9 @@ export default function OrganizationPage() {
 
         <motion.h1
           variants={fadeInUp}
-          className="text-4xl md:text-7xl font-medium tracking-tighter mb-6 md:mb-8 leading-tight"
+          className="text-4xl md:text-7xl font-medium tracking-tighter mb-6 md:mb-8 leading-tight text-foreground"
         >
-          The Engine <span className="text-zinc-500">&</span> <br />
+          The Engine <span className="text-muted-foreground">&</span> <br />
           <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
             The Architects.
           </span>
@@ -56,7 +56,7 @@ export default function OrganizationPage() {
 
         <motion.p
           variants={fadeInUp}
-          className="text-lg md:text-xl text-zinc-400 font-light max-w-3xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed"
         >
           A strong leadership backbone ensures coordination, community building,
           and content excellence.
@@ -71,7 +71,7 @@ export default function OrganizationPage() {
           className="flex items-center gap-4 mb-8 md:mb-12"
         >
           <div className="w-1 h-6 md:h-8 bg-brand-orange" />
-          <h2 className="text-2xl md:text-3xl font-medium">
+          <h2 className="text-2xl md:text-3xl font-medium text-foreground">
             The Ecosystem Triad
           </h2>
         </motion.div>
@@ -92,25 +92,25 @@ export default function OrganizationPage() {
                 </div>
               </div>
 
-              <span className="text-zinc-500 font-mono text-[10px] md:text-xs uppercase tracking-widest mb-2 block">
+              <span className="text-muted-foreground font-mono text-[10px] md:text-xs uppercase tracking-widest mb-2 block">
                 Entity 0{i + 1}
               </span>
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-foreground dark:text-white">
                 {company.title}
               </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8 flex-grow">
+              <p className="text-muted-foreground dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8 flex-grow">
                 {company.desc}
               </p>
 
-              <div className="pt-6 md:pt-8 border-t border-white/5">
-                <span className="text-[10px] md:text-xs font-bold uppercase text-white/50 mb-3 block">
+              <div className="pt-6 md:pt-8 border-t border-border dark:border-white/5">
+                <span className="text-[10px] md:text-xs font-bold uppercase text-muted-foreground/70 dark:text-white/50 mb-3 block">
                   Focus Areas
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {company.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 md:px-3 rounded-full bg-white/5 text-[10px] uppercase tracking-wider text-zinc-300 border border-white/5"
+                      className="px-2 py-1 md:px-3 rounded-full bg-muted dark:bg-white/5 text-[10px] uppercase tracking-wider text-muted-foreground dark:text-zinc-300 border border-border dark:border-white/5"
                     >
                       {tag}
                     </span>
@@ -124,7 +124,7 @@ export default function OrganizationPage() {
 
       {/* --- VISUAL DIVIDER --- */}
       <div className="max-w-7xl mx-auto py-6 md:py-10 flex items-center justify-center relative z-10">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-border dark:via-white/10 to-transparent" />
       </div>
 
       {/* --- SECTION 2: LEADERSHIP TEAM --- */}
@@ -137,10 +137,10 @@ export default function OrganizationPage() {
           >
             <div className="w-1 h-6 md:h-8 bg-brand-yellow" />
             <div>
-              <h2 className="text-2xl md:text-3xl font-medium">
+              <h2 className="text-2xl md:text-3xl font-medium text-foreground">
                 The Leadership Core
               </h2>
-              <p className="text-zinc-400 text-xs md:text-sm mt-1">
+              <p className="text-muted-foreground text-xs md:text-sm mt-1">
                 Visionaries & Strategists
               </p>
             </div>
@@ -157,20 +157,20 @@ export default function OrganizationPage() {
                     className={`px-2 py-1 md:px-3 md:py-1.5 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest border ${
                       member.tag === "Co-Founder"
                         ? "bg-brand-orange/10 text-brand-orange border-brand-orange/20"
-                        : "bg-white/5 text-zinc-400 border-white/10 group-hover:text-white group-hover:border-white/20 transition-colors"
+                        : "bg-muted dark:bg-white/5 text-muted-foreground dark:text-zinc-400 border-border dark:border-white/10 group-hover:text-foreground dark:group-hover:text-white group-hover:border-border dark:group-hover:border-white/20 transition-colors"
                     }`}
                   >
                     {member.tag}
                   </span>
                   <member.icon
                     size={18}
-                    className="text-zinc-700 group-hover:text-brand-yellow transition-colors duration-300 md:w-5 md:h-5"
+                    className="text-muted-foreground dark:text-zinc-700 group-hover:text-brand-yellow transition-colors duration-300 md:w-5 md:h-5"
                   />
                 </div>
 
                 {/* BODY */}
                 <div className="mb-4 md:mb-6">
-                  <h3 className="text-3xl md:text-4xl font-medium text-white mb-1 tracking-tight">
+                  <h3 className="text-3xl md:text-4xl font-medium text-foreground dark:text-white mb-1 tracking-tight">
                     {member.name}
                   </h3>
                   <p className="text-brand-yellow text-[10px] md:text-xs font-bold uppercase tracking-widest">
@@ -179,12 +179,12 @@ export default function OrganizationPage() {
                 </div>
 
                 {/* FOOTER: Bullet Points */}
-                <div className="mt-auto border-t border-white/5 pt-4 md:pt-6">
+                <div className="mt-auto border-t border-border dark:border-white/5 pt-4 md:pt-6">
                   <ul className="space-y-2 md:space-y-3">
                     {member.points.map((point, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-xs md:text-sm text-zinc-400 font-light leading-snug group-hover:text-zinc-300 transition-colors"
+                        className="flex items-start gap-3 text-xs md:text-sm text-muted-foreground dark:text-zinc-400 font-light leading-snug group-hover:text-foreground dark:group-hover:text-zinc-300 transition-colors"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-brand-orange/50 mt-1.5 shrink-0" />
                         {point}
@@ -201,12 +201,12 @@ export default function OrganizationPage() {
       {/* --- SECTION 3: THE AMBASSADOR NETWORK --- */}
       <section className="max-w-7xl mx-auto mb-24 md:mb-40 relative z-10">
         <div className="mb-8 md:mb-12 flex items-center gap-4">
-          <div className="w-1 h-6 md:h-8 bg-white" />
+          <div className="w-1 h-6 md:h-8 bg-foreground dark:bg-white" />
           <div>
-            <h2 className="text-2xl md:text-3xl font-medium">
+            <h2 className="text-2xl md:text-3xl font-medium text-foreground">
               The Ambassadors
             </h2>
-            <p className="text-zinc-400 text-xs md:text-sm mt-1">
+            <p className="text-muted-foreground text-xs md:text-sm mt-1">
               Tier & Regional Leads
             </p>
           </div>
@@ -219,10 +219,10 @@ export default function OrganizationPage() {
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 md:mb-6 text-brand-orange">
                 <Globe size={20} className="md:w-6 md:h-6" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium mb-3 md:mb-4">
+              <h3 className="text-2xl md:text-3xl font-medium mb-3 md:mb-4 text-foreground dark:text-white">
                 The Extension of the Core.
               </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
+              <p className="text-muted-foreground dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-6">
                 Ambassadors are the vital link between the leadership and the
                 community. They represent Inner Circle across regions, driving
                 participation and growth on the ground.
@@ -232,7 +232,7 @@ export default function OrganizationPage() {
                   (tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1 md:px-3 rounded-full border border-white/10 bg-white/5 text-[10px] md:text-xs uppercase tracking-widest text-zinc-400"
+                      className="px-2 py-1 md:px-3 rounded-full border border-border dark:border-white/10 bg-muted dark:bg-white/5 text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground dark:text-zinc-400"
                     >
                       {tag}
                     </span>
@@ -246,16 +246,16 @@ export default function OrganizationPage() {
               {ambassadorDuties.map((duty, i) => (
                 <div
                   key={i}
-                  className="p-4 rounded-2xl bg-black/40 border border-white/5 hover:border-brand-orange/20 transition-colors"
+                  className="p-4 rounded-2xl bg-card dark:bg-black/40 border border-border dark:border-white/5 hover:border-brand-orange/20 transition-colors"
                 >
                   <duty.icon
                     size={18}
                     className="text-brand-yellow mb-3 md:w-5 md:h-5"
                   />
-                  <h4 className="text-xs md:text-sm font-bold text-white mb-1">
+                  <h4 className="text-xs md:text-sm font-bold text-foreground dark:text-white mb-1">
                     {duty.title}
                   </h4>
-                  <p className="text-[10px] md:text-xs text-zinc-500">
+                  <p className="text-[10px] md:text-xs text-muted-foreground dark:text-zinc-500">
                     {duty.desc}
                   </p>
                 </div>

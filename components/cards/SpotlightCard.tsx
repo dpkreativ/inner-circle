@@ -29,7 +29,7 @@ export function SpotlightCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay }}
       onMouseMove={handleMouseMove}
-      className={`group relative border border-white/10 bg-zinc-900/30 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 hover:border-white/20 transition-colors duration-500 ${className}`}
+      className={`group relative border border-border dark:border-white/10 bg-card/50 dark:bg-zinc-900/30 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 hover:border-brand-orange/20 dark:hover:border-white/20 transition-colors duration-500 ${className}`}
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-[2rem] md:rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"

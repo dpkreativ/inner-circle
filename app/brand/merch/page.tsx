@@ -10,7 +10,7 @@ export default function MerchPage() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-[#050505] text-white selection:bg-brand-orange/30 font-sans pt-32 pb-20 px-6 relative"
+      className="min-h-screen bg-background text-foreground selection:bg-brand-orange/30 font-sans pt-32 pb-20 px-6 relative"
     >
       {/* --- HEADER --- */}
       <motion.div
@@ -20,7 +20,7 @@ export default function MerchPage() {
         className="max-w-7xl mx-auto mb-32 text-center"
       >
         <div className="flex justify-center mb-8">
-          <div className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-2">
+          <div className="px-4 py-1.5 rounded-full border border-border dark:border-white/10 bg-muted/50 dark:bg-white/5 backdrop-blur-xl flex items-center gap-2">
             <Tag size={12} className="text-brand-orange" />
             <span className="text-brand-orange text-xs font-bold uppercase tracking-[0.2em]">
               Official Lookbook
@@ -28,14 +28,14 @@ export default function MerchPage() {
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-medium tracking-tighter mb-8">
+        <h1 className="text-5xl md:text-8xl font-medium tracking-tighter mb-8 text-foreground">
           Wear Your <br />
           <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
             Legacy.
           </span>
         </h1>
 
-        <p className="text-xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-muted-foreground dark:text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
           The official uniform of the Inner Circle ecosystem. Designed for
           visibility, connection, and impact.
         </p>
@@ -50,13 +50,13 @@ export default function MerchPage() {
 
       {/* --- MID SECTION VISUAL --- */}
       <section className="max-w-7xl mx-auto mb-32">
-        <div className="relative h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden bg-gradient-to-r from-zinc-900 to-black border border-white/5 flex items-center justify-center group">
+        <div className="relative h-[300px] md:h-[400px] rounded-[3rem] overflow-hidden bg-gradient-to-r from-card to-background dark:from-zinc-900 dark:to-black border border-border dark:border-white/5 flex items-center justify-center group">
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
           <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(249,115,22,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_5s_infinite]" />
 
           <div className="text-center z-10">
             <Sparkles className="text-brand-orange mx-auto mb-4" size={48} />
-            <h3 className="text-3xl md:text-5xl font-bold tracking-tighter">
+            <h3 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">
               Built for the Architects.
             </h3>
           </div>
@@ -114,10 +114,12 @@ function CarouselSection({
   return (
     <section className="max-w-[100vw] mb-32 relative group/carousel">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 md:px-0 mb-8 flex items-end justify-between border-b border-white/10 pb-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-0 mb-8 flex items-end justify-between border-b border-border dark:border-white/10 pb-6">
         <div className="flex flex-col">
-          <h2 className="text-4xl font-medium tracking-tight">{title}</h2>
-          <span className="text-zinc-500 text-sm font-mono uppercase tracking-widest mt-2">
+          <h2 className="text-4xl font-medium tracking-tight text-foreground">
+            {title}
+          </h2>
+          <span className="text-muted-foreground text-sm font-mono uppercase tracking-widest mt-2">
             {subtitle}
           </span>
         </div>
@@ -129,7 +131,7 @@ function CarouselSection({
         <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
           <button
             onClick={() => scroll("left")}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+            className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border dark:border-white/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl text-foreground"
           >
             <ChevronLeft size={24} />
           </button>
@@ -157,7 +159,7 @@ function CarouselSection({
         <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
           <button
             onClick={() => scroll("right")}
-            className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+            className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border dark:border-white/10 flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl text-foreground"
           >
             <ChevronRight size={24} />
           </button>
@@ -185,7 +187,7 @@ function ShowcaseCard({
       <div
         className={`relative w-full bg-[#F4F4F5] rounded-[2.5rem] overflow-hidden mb-6 ${
           isSmall ? "aspect-square" : "aspect-[4/5]"
-        } flex items-center justify-center`}
+        } flex items-center justify-center border border-border`}
       >
         {/* Subtle Inner Shadow */}
         <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.05)] pointer-events-none z-10" />
@@ -204,10 +206,10 @@ function ShowcaseCard({
 
       {/* MINIMAL TEXT */}
       <div className="px-2">
-        <h3 className="text-2xl font-bold text-white group-hover:text-brand-orange transition-colors">
+        <h3 className="text-2xl font-bold text-foreground group-hover:text-brand-orange transition-colors">
           {item.name}
         </h3>
-        <p className="text-zinc-500 text-sm mt-1">{item.desc}</p>
+        <p className="text-muted-foreground text-sm mt-1">{item.desc}</p>
       </div>
     </motion.div>
   );

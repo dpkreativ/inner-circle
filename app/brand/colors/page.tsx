@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function ColorsPage() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-brand-orange/30 font-sans pt-24 md:pt-32 pb-20 px-4 md:px-6">
+    <div className="min-h-screen bg-background text-foreground selection:bg-brand-orange/30 font-sans pt-24 md:pt-32 pb-20 px-4 md:px-6">
       {/* --- HEADER --- */}
       <motion.div
         initial="hidden"
@@ -18,7 +18,7 @@ export default function ColorsPage() {
           variants={fadeInUp}
           className="flex justify-center mb-6 md:mb-8"
         >
-          <div className="px-3 py-1.5 md:px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center gap-2">
+          <div className="px-3 py-1.5 md:px-4 rounded-full border border-border dark:border-white/10 bg-muted/50 dark:bg-white/5 backdrop-blur-xl flex items-center gap-2">
             <Palette size={12} className="text-brand-orange" />
             <span className="text-brand-orange text-[10px] md:text-xs font-medium uppercase tracking-[0.2em]">
               Brand Palette
@@ -29,7 +29,7 @@ export default function ColorsPage() {
         {/* Responsive Typography: 4xl mobile -> 7xl desktop */}
         <motion.h1
           variants={fadeInUp}
-          className="text-4xl md:text-7xl font-medium tracking-tighter mb-6 md:mb-8 leading-tight"
+          className="text-4xl md:text-7xl font-medium tracking-tighter mb-6 md:mb-8 leading-tight text-foreground"
         >
           Energy &{" "}
           <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
@@ -39,7 +39,7 @@ export default function ColorsPage() {
 
         <motion.p
           variants={fadeInUp}
-          className="text-lg md:text-xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed"
         >
           Our colors represent the journey of our members. From the grounding
           passion of orange to the clarity and innovation of yellow.
@@ -52,7 +52,7 @@ export default function ColorsPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="relative w-full h-80 md:h-96 rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/10"
+          className="relative w-full h-80 md:h-96 rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-border dark:border-white/10"
         >
           {/* Animated Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-br md:bg-gradient-to-r from-brand-orange via-brand-yellow to-brand-orange bg-[length:200%_auto] animate-gradient" />
@@ -73,21 +73,21 @@ export default function ColorsPage() {
 
         {/* Meaning Cards */}
         <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-          <div className="p-6 md:p-8 rounded-[2rem] bg-zinc-900/50 border border-white/5">
+          <div className="p-6 md:p-8 rounded-[2rem] bg-card dark:bg-zinc-900/50 border border-border dark:border-white/5">
             <h3 className="text-brand-orange font-bold uppercase tracking-widest text-xs md:text-sm mb-3 md:mb-4">
               Meaning
             </h3>
-            <p className="text-zinc-400 leading-relaxed text-sm md:text-base">
+            <p className="text-muted-foreground dark:text-zinc-400 leading-relaxed text-sm md:text-base">
               The deep orange symbolizes the grounding passion and raw potential
               of our members. It is the spark of connection and the warmth of
               community.
             </p>
           </div>
-          <div className="p-6 md:p-8 rounded-[2rem] bg-zinc-900/50 border border-white/5">
+          <div className="p-6 md:p-8 rounded-[2rem] bg-card dark:bg-zinc-900/50 border border-border dark:border-white/5">
             <h3 className="text-brand-yellow font-bold uppercase tracking-widest text-xs md:text-sm mb-3 md:mb-4">
               Meaning
             </h3>
-            <p className="text-zinc-400 leading-relaxed text-sm md:text-base">
+            <p className="text-muted-foreground dark:text-zinc-400 leading-relaxed text-sm md:text-base">
               The transition to bright yellow signifies clarity, innovation, and
               &ldquo;light bulb moments.&rdquo; It represents the dawn of a new
               generation of leaders.
@@ -99,8 +99,10 @@ export default function ColorsPage() {
       {/* --- COLOR SWATCHES GRID --- */}
       <section className="max-w-7xl mx-auto">
         <div className="mb-8 md:mb-12 flex items-center gap-4">
-          <div className="w-1 h-6 md:h-8 bg-white" />
-          <h2 className="text-2xl md:text-3xl font-medium">Utility Palette</h2>
+          <div className="w-1 h-6 md:h-8 bg-foreground dark:bg-white" />
+          <h2 className="text-2xl md:text-3xl font-medium text-foreground">
+            Utility Palette
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -137,7 +139,7 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5 }}
       viewport={{ once: true }}
-      className="group relative bg-zinc-900 border border-white/5 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden hover:border-white/20 transition-colors duration-500"
+      className="group relative bg-card dark:bg-zinc-900 border border-border dark:border-white/5 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden hover:border-muted-foreground/20 dark:hover:border-white/20 transition-colors duration-500"
     >
       {/* Color Preview Area */}
       <div
@@ -149,20 +151,24 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
 
       {/* Color Details */}
       <div className="p-6 md:p-8">
-        <h3 className="text-xl md:text-2xl font-medium mb-1">{color.name}</h3>
-        <p className="text-zinc-500 text-xs md:text-sm mb-6">{color.usage}</p>
+        <h3 className="text-xl md:text-2xl font-medium mb-1 text-foreground">
+          {color.name}
+        </h3>
+        <p className="text-muted-foreground text-xs md:text-sm mb-6">
+          {color.usage}
+        </p>
 
         <div className="space-y-2 md:space-y-3">
           {/* HEX ROW */}
           <button
             onClick={() => handleCopy(color.hex, "HEX")}
-            className="w-full flex items-center justify-between p-3 rounded-xl bg-black border border-white/10 hover:bg-white/5 hover:border-white/30 transition-all group/btn active:scale-95"
+            className="w-full flex items-center justify-between p-3 rounded-xl bg-muted dark:bg-black border border-border dark:border-white/10 hover:bg-muted/80 dark:hover:bg-white/5 hover:border-foreground/20 dark:hover:border-white/30 transition-all group/btn active:scale-95"
           >
-            <span className="text-zinc-500 text-[10px] md:text-xs font-mono uppercase">
+            <span className="text-muted-foreground text-[10px] md:text-xs font-mono uppercase">
               HEX
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-white font-mono text-xs md:text-sm">
+              <span className="text-foreground dark:text-white font-mono text-xs md:text-sm">
                 {color.hex}
               </span>
               {copied === "HEX" ? (
@@ -170,7 +176,7 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
               ) : (
                 <Copy
                   size={14}
-                  className="text-zinc-600 group-hover/btn:text-white"
+                  className="text-muted-foreground dark:text-zinc-600 group-hover/btn:text-foreground dark:group-hover/btn:text-white"
                 />
               )}
             </div>
@@ -179,13 +185,13 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
           {/* RGB ROW */}
           <button
             onClick={() => handleCopy(color.rgb, "RGB")}
-            className="w-full flex items-center justify-between p-3 rounded-xl bg-black border border-white/10 hover:bg-white/5 hover:border-white/30 transition-all group/btn active:scale-95"
+            className="w-full flex items-center justify-between p-3 rounded-xl bg-muted dark:bg-black border border-border dark:border-white/10 hover:bg-muted/80 dark:hover:bg-white/5 hover:border-foreground/20 dark:hover:border-white/30 transition-all group/btn active:scale-95"
           >
-            <span className="text-zinc-500 text-[10px] md:text-xs font-mono uppercase">
+            <span className="text-muted-foreground text-[10px] md:text-xs font-mono uppercase">
               RGB
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-white font-mono text-xs md:text-sm">
+              <span className="text-foreground dark:text-white font-mono text-xs md:text-sm">
                 {color.rgb}
               </span>
               {copied === "RGB" ? (
@@ -193,7 +199,7 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
               ) : (
                 <Copy
                   size={14}
-                  className="text-zinc-600 group-hover/btn:text-white"
+                  className="text-muted-foreground dark:text-zinc-600 group-hover/btn:text-foreground dark:group-hover/btn:text-white"
                 />
               )}
             </div>
@@ -202,13 +208,13 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
           {/* CMYK ROW */}
           <button
             onClick={() => handleCopy(color.cmyk, "CMYK")}
-            className="w-full flex items-center justify-between p-3 rounded-xl bg-black border border-white/10 hover:bg-white/5 hover:border-white/30 transition-all group/btn active:scale-95"
+            className="w-full flex items-center justify-between p-3 rounded-xl bg-muted dark:bg-black border border-border dark:border-white/10 hover:bg-muted/80 dark:hover:bg-white/5 hover:border-foreground/20 dark:hover:border-white/30 transition-all group/btn active:scale-95"
           >
-            <span className="text-zinc-500 text-[10px] md:text-xs font-mono uppercase">
+            <span className="text-muted-foreground text-[10px] md:text-xs font-mono uppercase">
               CMYK
             </span>
             <div className="flex items-center gap-2">
-              <span className="text-white font-mono text-xs md:text-sm">
+              <span className="text-foreground dark:text-white font-mono text-xs md:text-sm">
                 {color.cmyk}
               </span>
               {copied === "CMYK" ? (
@@ -216,7 +222,7 @@ function ColorCard({ color, delay }: { color: ColorData; delay: number }) {
               ) : (
                 <Copy
                   size={14}
-                  className="text-zinc-600 group-hover/btn:text-white"
+                  className="text-muted-foreground dark:text-zinc-600 group-hover/btn:text-foreground dark:group-hover/btn:text-white"
                 />
               )}
             </div>
