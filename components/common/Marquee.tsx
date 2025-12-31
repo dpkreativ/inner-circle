@@ -9,7 +9,7 @@ interface MarqueeProps {
 
 export function Marquee({ items }: MarqueeProps) {
   return (
-    <section className="py-4 md:py-6 border-y border-white/5 bg-black/50 backdrop-blur-md relative overflow-hidden">
+    <section className="py-4 md:py-6 border-y border-border bg-transparent dark:bg-black/50 backdrop-blur-md relative overflow-hidden">
       <div className="flex overflow-hidden group">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -19,7 +19,7 @@ export function Marquee({ items }: MarqueeProps) {
           {[...items, ...items].map((item, i) => (
             <div
               key={i}
-              className="flex items-center gap-4 md:gap-6 text-xs md:text-base font-medium text-white/40 uppercase tracking-[0.15em] hover:text-white transition-colors cursor-default"
+              className="flex items-center gap-4 md:gap-6 text-xs md:text-base font-medium text-black dark:text-white/40 uppercase tracking-[0.15em] hover:text-black/70 dark:hover:text-white transition-colors cursor-default"
             >
               <Sparkles size={12} className="text-brand-orange" />
               {item}

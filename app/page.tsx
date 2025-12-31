@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Users,
@@ -225,35 +226,25 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]">
           {/* LARGE CARD */}
           <div className="md:col-span-2 row-span-1 md:row-span-2 group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-orange/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[300px]">
-            <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-              <div className="absolute top-10 right-10 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1),transparent_70%)]" />
-              <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-                <line
-                  x1="50%"
-                  y1="30%"
-                  x2="70%"
-                  y2="50%"
-                  stroke="#F97316"
-                  strokeWidth="0.5"
-                />
-                <line
-                  x1="70%"
-                  y1="50%"
-                  x2="60%"
-                  y2="70%"
-                  stroke="#F97316"
-                  strokeWidth="0.5"
-                />
-              </svg>
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/images/shared_growth.png"
+                alt="Community of Shared Growth"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
             </div>
+
             <div className="relative z-10 mt-auto">
-              <div className="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 text-brand-orange border border-brand-orange/20">
+              <div className="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 text-brand-orange border border-brand-orange/20 backdrop-blur-md">
                 <Users size={24} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-foreground mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight drop-shadow-md">
                 Community of Shared Growth
               </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
+              <p className="text-zinc-200 text-sm md:text-base leading-relaxed max-w-md font-light drop-shadow-md">
                 A space where connection transcends time, providing mentorship
                 and opportunities across generations.
               </p>
@@ -262,28 +253,48 @@ export default function Home() {
 
           {/* SMALL CARDS */}
           <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-yellow/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
-            <div className="w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow border border-brand-yellow/20">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/story_telling.png"
+                alt="Storytelling Ecosystem"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
+            </div>
+
+            <div className="relative z-10 w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow border border-brand-yellow/20 backdrop-blur-md">
               <Layers size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-foreground mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-white mb-2 tracking-tight drop-shadow-md">
                 Storytelling Ecosystem
               </h3>
-              <p className="text-muted-foreground text-xs leading-relaxed">
+              <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-md">
                 Where stories become lessons and content becomes legacy.
               </p>
             </div>
           </div>
 
           <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-muted-foreground/20 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
-            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/social_impact.png"
+                alt="Impact Engine"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
+            </div>
+
+            <div className="relative z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/20 backdrop-blur-md">
               <Target size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-foreground mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-white mb-2 tracking-tight drop-shadow-md">
                 Impact Engine
               </h3>
-              <p className="text-muted-foreground text-xs leading-relaxed">
+              <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-md">
                 Legacy-building initiatives driven by social impact.
               </p>
             </div>
@@ -291,7 +302,16 @@ export default function Home() {
 
           {/* WIDE CARD */}
           <div className="md:col-span-3 group relative p-8 rounded-[2rem] bg-gradient-to-r from-card to-card/50 border border-border hover:border-brand-orange/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="absolute right-[-10%] top-[-50%] w-[400px] h-[400px] bg-brand-orange/5 rounded-full blur-[100px]" />
+            <div className="absolute inset-0">
+              <Image
+                src="/images/multigeneration_family.jpeg"
+                alt="Multi-Generational Movement"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-50 group-hover:opacity-70 grayscale group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent mix-blend-multiply" />
+            </div>
+
             <div className="flex-1 relative z-10">
               <div className="flex items-center gap-3 mb-3">
                 <Globe className="text-brand-orange" size={18} />
@@ -299,10 +319,10 @@ export default function Home() {
                   Global Vision
                 </span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-foreground mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight drop-shadow-md">
                 A Multi-Generational Movement
               </h3>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl font-light">
+              <p className="text-zinc-200 text-base md:text-lg max-w-2xl font-light drop-shadow-md">
                 To bridge generations, providing access, mentorship, and
                 belonging that transcend time.
               </p>
@@ -317,7 +337,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-brand-orange/20 via-black to-black border border-brand-orange/30 overflow-hidden"
+          className="relative p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-brand-orange/10 via-slate-50 to-slate-50 dark:from-brand-orange/20 dark:via-black dark:to-black border border-brand-orange/20 dark:border-brand-orange/30 overflow-hidden shadow-2xl shadow-brand-orange/5 dark:shadow-none"
         >
           {/* Background Elements */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
@@ -333,21 +353,21 @@ export default function Home() {
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6">
+              <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6 text-foreground">
                 Inner Circle{" "}
                 <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
                   Connect
                 </span>
               </h2>
 
-              <p className="text-lg md:text-xl text-zinc-300 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 Join us for the inaugural Inner Circle Connect event. A
                 multi-generational gathering designed to spark connections,
                 share wisdom, and build lasting relationships across age groups.
               </p>
 
               <Link href="/connect">
-                <button className="group px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-brand-orange hover:text-white transition-all duration-300 flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                <button className="group px-8 py-4 bg-foreground text-background dark:bg-white dark:text-black rounded-full font-bold hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange dark:hover:text-white transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                   <span>Learn More About Connect</span>
                   <ArrowRight
                     size={18}
@@ -371,12 +391,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10"
+                  className="p-6 rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-sm border border-brand-orange/10 dark:border-white/10 shadow-sm dark:shadow-none"
                 >
                   <div className="text-brand-orange text-sm font-bold uppercase tracking-widest mb-2">
                     {item.label}
                   </div>
-                  <div className="text-white text-lg font-medium">
+                  <div className="text-foreground dark:text-white text-lg font-medium">
                     {item.value}
                   </div>
                 </motion.div>

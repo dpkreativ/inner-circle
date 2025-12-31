@@ -61,7 +61,7 @@ export default function Navbar() {
               src="/images/logo-white.png"
               alt="Inner Circle Logo"
               fill={true}
-              className="object-contain object-left invert dark:invert-0"
+              className="object-contain object-left brightness-0 dark:brightness-100"
               priority
               unoptimized
             />
@@ -144,17 +144,17 @@ export default function Navbar() {
           })}
         </ul>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <ThemeToggle />
-        </div>
 
-        {/* MOBILE TOGGLE BUTTON */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden relative z-50 p-2 text-foreground hover:text-brand-orange transition-colors"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* MOBILE TOGGLE BUTTON */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden relative z-50 p-2 text-foreground hover:text-brand-orange transition-colors"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* MOBILE FULLSCREEN MENU */}
@@ -170,7 +170,7 @@ export default function Navbar() {
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
             <div className="absolute top-1/4 right-0 w-[300px] h-[300px] bg-brand-orange/10 rounded-full blur-[100px]" />
 
-            <ul className="relative z-10 flex flex-col gap-2">
+            <ul className="relative z-10 flex flex-col gap-2 mt-8">
               {navItems.map((item, i) => {
                 const isActive =
                   pathname === item.path ||
@@ -226,25 +226,7 @@ export default function Navbar() {
                   </motion.li>
                 );
               })}
-              <div className="relative z-10 mt-6 px-4">
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <span>Theme</span>
-                  <ThemeToggle />
-                </div>
-              </div>
             </ul>
-
-            {/* Footer info */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="absolute bottom-10 left-0 w-full text-center"
-            >
-              <p className="text-muted-foreground text-xs font-mono uppercase tracking-widest">
-                Inner Circle Brand Guide
-              </p>
-            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
