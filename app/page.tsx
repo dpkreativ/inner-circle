@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Users,
@@ -54,7 +55,7 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="min-h-screen bg-[#050505] text-white overflow-hidden selection:bg-brand-orange/30 font-sans"
+      className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-brand-orange/30 font-sans"
     >
       {/* --- HERO SECTION --- */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 px-4 md:px-6 overflow-hidden">
@@ -78,11 +79,12 @@ export default function Home() {
           {/* OPTIMIZED TYPOGRAPHY FOR MOBILE */}
           <motion.h1
             variants={fadeInUp}
-            className="text-[2.5rem] sm:text-5xl md:text-8xl font-medium tracking-tighter text-white mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] text-balance"
+            className="text-[2.5rem] sm:text-5xl md:text-8xl font-medium tracking-tighter text-foreground mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] text-balance"
           >
-            Where <span className="font-light text-white/70">Stories</span>,{" "}
+            Where{" "}
+            <span className="font-light text-muted-foreground">Stories</span>,{" "}
             <br className="hidden md:block" />
-            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-b from-white via-white to-white/50">
+            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
               Community
             </span>
             , & Purpose <br />
@@ -93,7 +95,7 @@ export default function Home() {
 
           <motion.p
             variants={fadeInUp}
-            className="text-base sm:text-lg md:text-2xl text-zinc-400 font-light max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed tracking-wide text-balance"
+            className="text-base sm:text-lg md:text-2xl text-muted-foreground font-light max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed tracking-wide text-balance"
           >
             Building a global, multi-generational community that sustains itself
             financially, socially, and culturally.
@@ -103,8 +105,8 @@ export default function Home() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center items-center w-full px-4"
           >
-            <Link href="/logo" className="w-full sm:w-auto">
-              <button className="group w-full sm:w-auto relative px-8 py-4 bg-white text-black rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
+            <Link href="/assets" className="w-full sm:w-auto">
+              <button className="group w-full sm:w-auto relative px-8 py-4 bg-foreground text-background rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
                 <span className="relative z-10 flex items-center justify-center gap-3 text-sm font-bold tracking-wide uppercase">
                   Explore Assets{" "}
                   <ArrowRight
@@ -116,7 +118,7 @@ export default function Home() {
               </button>
             </Link>
             <Link href="/mission" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/10 text-white hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full border border-border text-foreground hover:bg-muted hover:border-border transition-all duration-300">
                 <span className="text-sm font-medium tracking-wide uppercase">
                   Read the Mission
                 </span>
@@ -135,7 +137,7 @@ export default function Home() {
           <span className="text-brand-orange font-medium uppercase tracking-[0.2em] text-[10px] md:text-xs mb-3 block">
             Our Community
           </span>
-          <h2 className="text-3xl md:text-6xl font-medium tracking-tighter text-white">
+          <h2 className="text-3xl md:text-6xl font-medium tracking-tighter text-foreground">
             Generational Tiers
           </h2>
         </div>
@@ -145,7 +147,7 @@ export default function Home() {
           <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex">
             <button
               onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+              className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
             >
               <ChevronLeft size={24} />
             </button>
@@ -164,7 +166,7 @@ export default function Home() {
                   y: -10,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="snap-center shrink-0 w-[280px] md:w-[380px] h-[450px] md:h-[500px] relative rounded-[2rem] overflow-hidden bg-[#0A0A0A] border border-white/5 hover:border-white/10 group select-none shadow-2xl shadow-black/50"
+                className="snap-center shrink-0 w-[280px] md:w-[380px] h-[450px] md:h-[500px] relative rounded-[2rem] overflow-hidden bg-card border border-border hover:border-muted-foreground/20 group select-none shadow-2xl shadow-black/5 dark:shadow-black/50"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-b ${tier.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-700`}
@@ -172,10 +174,10 @@ export default function Home() {
 
                 <div className="relative z-10 h-full p-6 md:p-8 flex flex-col">
                   <div className="flex justify-between items-start mb-8">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/5 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-muted backdrop-blur-md flex items-center justify-center border border-border group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                       <tier.icon size={18} className="md:w-5 md:h-5" />
                     </div>
-                    <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg group-hover:bg-brand-orange/20 group-hover:border-brand-orange/40 group-hover:text-brand-orange transition-all">
+                    <span className="px-3 py-1.5 rounded-full bg-muted border border-border text-[10px] font-bold uppercase tracking-widest text-foreground shadow-lg group-hover:bg-brand-orange/20 group-hover:border-brand-orange/40 group-hover:text-brand-orange transition-all">
                       Ages {tier.age}
                     </span>
                   </div>
@@ -184,11 +186,11 @@ export default function Home() {
                     {tier.visual}
                   </div>
 
-                  <div className="mt-auto pt-6 border-t border-white/5">
+                  <div className="mt-auto pt-6 border-t border-border">
                     <h3 className="text-2xl md:text-3xl font-medium mb-2 tracking-tight">
                       {tier.name}
                     </h3>
-                    <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">
+                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed font-light">
                       {tier.desc}
                     </p>
                   </div>
@@ -201,7 +203,7 @@ export default function Home() {
           <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex">
             <button
               onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+              className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
             >
               <ChevronRight size={24} />
             </button>
@@ -215,7 +217,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-6xl font-medium mb-6 tracking-tighter">
             Our Core Identity
           </h2>
-          <p className="text-lg md:text-2xl text-zinc-400 font-light leading-normal">
+          <p className="text-lg md:text-2xl text-muted-foreground font-light leading-normal">
             Inner Circle is not just a community; it is a creative platform and
             legacy-building social impact engine.
           </p>
@@ -223,36 +225,26 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]">
           {/* LARGE CARD */}
-          <div className="md:col-span-2 row-span-1 md:row-span-2 group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-brand-orange/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[300px]">
-            <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-              <div className="absolute top-10 right-10 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1),transparent_70%)]" />
-              <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-                <line
-                  x1="50%"
-                  y1="30%"
-                  x2="70%"
-                  y2="50%"
-                  stroke="#F97316"
-                  strokeWidth="0.5"
-                />
-                <line
-                  x1="70%"
-                  y1="50%"
-                  x2="60%"
-                  y2="70%"
-                  stroke="#F97316"
-                  strokeWidth="0.5"
-                />
-              </svg>
+          <div className="md:col-span-2 row-span-1 md:row-span-2 group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-orange/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[300px]">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <Image
+                src="/images/shared_growth.png"
+                alt="Community of Shared Growth"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
             </div>
+
             <div className="relative z-10 mt-auto">
-              <div className="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 text-brand-orange border border-brand-orange/20">
+              <div className="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 text-brand-orange border border-brand-orange/20 backdrop-blur-md">
                 <Users size={24} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight drop-shadow-md">
                 Community of Shared Growth
               </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-md font-light">
+              <p className="text-zinc-200 text-sm md:text-base leading-relaxed max-w-md font-light drop-shadow-md">
                 A space where connection transcends time, providing mentorship
                 and opportunities across generations.
               </p>
@@ -260,37 +252,66 @@ export default function Home() {
           </div>
 
           {/* SMALL CARDS */}
-          <div className="group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-brand-yellow/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
-            <div className="w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow border border-brand-yellow/20">
+          <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-yellow/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/story_telling.png"
+                alt="Storytelling Ecosystem"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
+            </div>
+
+            <div className="relative z-10 w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow border border-brand-yellow/20 backdrop-blur-md">
               <Layers size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-white mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-white mb-2 tracking-tight drop-shadow-md">
                 Storytelling Ecosystem
               </h3>
-              <p className="text-zinc-500 text-xs leading-relaxed">
+              <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-md">
                 Where stories become lessons and content becomes legacy.
               </p>
             </div>
           </div>
 
-          <div className="group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-white/20 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/10">
+          <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-muted-foreground/20 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/social_impact.png"
+                alt="Impact Engine"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 mix-blend-multiply" />
+            </div>
+
+            <div className="relative z-10 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/20 backdrop-blur-md">
               <Target size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-white mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-white mb-2 tracking-tight drop-shadow-md">
                 Impact Engine
               </h3>
-              <p className="text-zinc-500 text-xs leading-relaxed">
+              <p className="text-zinc-200 text-xs leading-relaxed drop-shadow-md">
                 Legacy-building initiatives driven by social impact.
               </p>
             </div>
           </div>
 
           {/* WIDE CARD */}
-          <div className="md:col-span-3 group relative p-8 rounded-[2rem] bg-gradient-to-r from-[#0A0A0A] to-[#111] border border-white/5 hover:border-brand-orange/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="absolute right-[-10%] top-[-50%] w-[400px] h-[400px] bg-brand-orange/5 rounded-full blur-[100px]" />
+          <div className="md:col-span-3 group relative p-8 rounded-[2rem] bg-gradient-to-r from-card to-card/50 border border-border hover:border-brand-orange/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/multigeneration_family.jpeg"
+                alt="Multi-Generational Movement"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-50 group-hover:opacity-70 grayscale group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent mix-blend-multiply" />
+            </div>
+
             <div className="flex-1 relative z-10">
               <div className="flex items-center gap-3 mb-3">
                 <Globe className="text-brand-orange" size={18} />
@@ -298,10 +319,10 @@ export default function Home() {
                   Global Vision
                 </span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight drop-shadow-md">
                 A Multi-Generational Movement
               </h3>
-              <p className="text-zinc-400 text-base md:text-lg max-w-2xl font-light">
+              <p className="text-zinc-200 text-base md:text-lg max-w-2xl font-light drop-shadow-md">
                 To bridge generations, providing access, mentorship, and
                 belonging that transcend time.
               </p>
@@ -316,7 +337,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-brand-orange/20 via-black to-black border border-brand-orange/30 overflow-hidden"
+          className="relative p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-brand-orange/10 via-slate-50 to-slate-50 dark:from-brand-orange/20 dark:via-black dark:to-black border border-brand-orange/20 dark:border-brand-orange/30 overflow-hidden shadow-2xl shadow-brand-orange/5 dark:shadow-none"
         >
           {/* Background Elements */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
@@ -332,21 +353,21 @@ export default function Home() {
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6">
+              <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-6 text-foreground">
                 Inner Circle{" "}
                 <span className="text-transparent bg-clip-text px-3 bg-gradient-to-r from-brand-orange to-brand-yellow">
                   Connect
                 </span>
               </h2>
 
-              <p className="text-lg md:text-xl text-zinc-300 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 Join us for the inaugural Inner Circle Connect event. A
                 multi-generational gathering designed to spark connections,
                 share wisdom, and build lasting relationships across age groups.
               </p>
 
               <Link href="/connect">
-                <button className="group px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-brand-orange hover:text-white transition-all duration-300 flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                <button className="group px-8 py-4 bg-foreground text-background dark:bg-white dark:text-black rounded-full font-bold hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange dark:hover:text-white transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                   <span>Learn More About Connect</span>
                   <ArrowRight
                     size={18}
@@ -370,12 +391,12 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 rounded-2xl bg-black/40 backdrop-blur-sm border border-white/10"
+                  className="p-6 rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-sm border border-brand-orange/10 dark:border-white/10 shadow-sm dark:shadow-none"
                 >
                   <div className="text-brand-orange text-sm font-bold uppercase tracking-widest mb-2">
                     {item.label}
                   </div>
-                  <div className="text-white text-lg font-medium">
+                  <div className="text-foreground dark:text-white text-lg font-medium">
                     {item.value}
                   </div>
                 </motion.div>

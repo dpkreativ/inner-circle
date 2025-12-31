@@ -2,7 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #0a0a0a;
-  color: #ffffff;
+@layer base {
+  :root {
+    /* Light Mode - Slate Palette */
+    --background: 210 40% 98%; /* Slate-50 */
+    --foreground: 222.2 47.4% 11.2%; /* Slate-900 */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222.2 47.4% 11.2%; /* Slate-900 */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 24 98% 53%; /* Brand Orange */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 48 96% 53%; /* Brand Yellow */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%; /* Slate-100 */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Slate-500 */
+
+    --accent: 210 40% 96.1%; /* Slate-100 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%; /* Slate-200 */
+    --input: 214.3 31.8% 91.4%;
+    --ring: 24 98% 53%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode (Matching existing #050505 bg) */
+    --background: 0 0% 2%; /* #050505 approx */
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 4%; /* #0A0A0A */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 24 98% 53%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 24 98% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
