@@ -12,18 +12,7 @@ import {
 import { useRef } from "react";
 
 // --- ANIMATION VARIANTS ---
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer = {
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export default function ProjectsPage() {
   const containerRef = useRef(null);

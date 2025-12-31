@@ -90,7 +90,7 @@ export default function Assets() {
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {assets.map((asset, index) => (
+            {assets.map((asset) => (
               <motion.div
                 key={asset.title}
                 variants={scaleIn}

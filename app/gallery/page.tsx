@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Image as ImageIcon, MapPin, Calendar } from "lucide-react";
-import { fadeInUp, staggerContainer, scaleIn } from "@/lib/motion";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { AnimatedBackground } from "@/components/common/AnimatedBackground";
 import { SectionBadge } from "@/components/common/SectionBadge";
 import { useState } from "react";

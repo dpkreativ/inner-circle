@@ -15,15 +15,7 @@ import {
 import Image from "next/image";
 import { MouseEvent } from "react";
 
-// --- ANIMATION VARIANTS ---
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const staggerContainer = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export default function OrganizationPage() {
   return (

@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, User, Clock, Tag, ArrowUpRight } from "lucide-react";
+import { MessageCircle, User, Clock, ArrowUpRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { AnimatedBackground } from "@/components/common/AnimatedBackground";
 import { SectionBadge } from "@/components/common/SectionBadge";
-import Link from "next/link";
 
 export default function Conversations() {
   const conversations = [

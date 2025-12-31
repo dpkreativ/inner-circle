@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, Pause, Mic, Clock, Calendar, Headphones } from "lucide-react";
+import { Play, Pause, Mic, Clock, Calendar } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { AnimatedBackground } from "@/components/common/AnimatedBackground";
 import { SectionBadge } from "@/components/common/SectionBadge";
@@ -96,7 +96,7 @@ export default function Podcasts() {
 
           {/* Podcast List */}
           <div className="space-y-4">
-            {episodes.map((episode, index) => (
+            {episodes.map((episode) => (
               <motion.div
                 key={episode.id}
                 variants={fadeInUp}

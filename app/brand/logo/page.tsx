@@ -4,18 +4,7 @@ import { Download, Share2, Zap, Type, Check, X } from "lucide-react";
 import Image from "next/image";
 
 // Animation Variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const staggerContainer = {
-  visible: { transition: { staggerChildren: 0.15 } },
-};
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export default function LogoPage() {
   return (
