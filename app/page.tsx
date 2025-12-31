@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="min-h-screen bg-[#050505] text-white overflow-hidden selection:bg-brand-orange/30 font-sans"
+      className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-brand-orange/30 font-sans"
     >
       {/* --- HERO SECTION --- */}
       <section className="relative flex flex-col items-center justify-center text-center py-32 px-4 md:px-6 overflow-hidden">
@@ -78,11 +78,12 @@ export default function Home() {
           {/* OPTIMIZED TYPOGRAPHY FOR MOBILE */}
           <motion.h1
             variants={fadeInUp}
-            className="text-[2.5rem] sm:text-5xl md:text-8xl font-medium tracking-tighter text-white mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] text-balance"
+            className="text-[2.5rem] sm:text-5xl md:text-8xl font-medium tracking-tighter text-foreground mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] text-balance"
           >
-            Where <span className="font-light text-white/70">Stories</span>,{" "}
+            Where{" "}
+            <span className="font-light text-muted-foreground">Stories</span>,{" "}
             <br className="hidden md:block" />
-            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-b from-white via-white to-white/50">
+            <span className="bg-clip-text px-3 text-transparent bg-gradient-to-b from-foreground via-foreground to-foreground/50">
               Community
             </span>
             , & Purpose <br />
@@ -93,7 +94,7 @@ export default function Home() {
 
           <motion.p
             variants={fadeInUp}
-            className="text-base sm:text-lg md:text-2xl text-zinc-400 font-light max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed tracking-wide text-balance"
+            className="text-base sm:text-lg md:text-2xl text-muted-foreground font-light max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed tracking-wide text-balance"
           >
             Building a global, multi-generational community that sustains itself
             financially, socially, and culturally.
@@ -103,8 +104,8 @@ export default function Home() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center items-center w-full px-4"
           >
-            <Link href="/logo" className="w-full sm:w-auto">
-              <button className="group w-full sm:w-auto relative px-8 py-4 bg-white text-black rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
+            <Link href="/assets" className="w-full sm:w-auto">
+              <button className="group w-full sm:w-auto relative px-8 py-4 bg-foreground text-background rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
                 <span className="relative z-10 flex items-center justify-center gap-3 text-sm font-bold tracking-wide uppercase">
                   Explore Assets{" "}
                   <ArrowRight
@@ -116,7 +117,7 @@ export default function Home() {
               </button>
             </Link>
             <Link href="/mission" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/10 text-white hover:bg-white/5 hover:border-white/30 transition-all duration-300">
+              <button className="w-full sm:w-auto px-8 py-4 rounded-full border border-border text-foreground hover:bg-muted hover:border-border transition-all duration-300">
                 <span className="text-sm font-medium tracking-wide uppercase">
                   Read the Mission
                 </span>
@@ -135,7 +136,7 @@ export default function Home() {
           <span className="text-brand-orange font-medium uppercase tracking-[0.2em] text-[10px] md:text-xs mb-3 block">
             Our Community
           </span>
-          <h2 className="text-3xl md:text-6xl font-medium tracking-tighter text-white">
+          <h2 className="text-3xl md:text-6xl font-medium tracking-tighter text-foreground">
             Generational Tiers
           </h2>
         </div>
@@ -145,7 +146,7 @@ export default function Home() {
           <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex">
             <button
               onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+              className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
             >
               <ChevronLeft size={24} />
             </button>
@@ -164,7 +165,7 @@ export default function Home() {
                   y: -10,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="snap-center shrink-0 w-[280px] md:w-[380px] h-[450px] md:h-[500px] relative rounded-[2rem] overflow-hidden bg-[#0A0A0A] border border-white/5 hover:border-white/10 group select-none shadow-2xl shadow-black/50"
+                className="snap-center shrink-0 w-[280px] md:w-[380px] h-[450px] md:h-[500px] relative rounded-[2rem] overflow-hidden bg-card border border-border hover:border-muted-foreground/20 group select-none shadow-2xl shadow-black/5 dark:shadow-black/50"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-b ${tier.gradient} opacity-10 group-hover:opacity-30 transition-opacity duration-700`}
@@ -172,10 +173,10 @@ export default function Home() {
 
                 <div className="relative z-10 h-full p-6 md:p-8 flex flex-col">
                   <div className="flex justify-between items-start mb-8">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 backdrop-blur-md flex items-center justify-center border border-white/5 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-muted backdrop-blur-md flex items-center justify-center border border-border group-hover:bg-foreground group-hover:text-background transition-all duration-500">
                       <tier.icon size={18} className="md:w-5 md:h-5" />
                     </div>
-                    <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg group-hover:bg-brand-orange/20 group-hover:border-brand-orange/40 group-hover:text-brand-orange transition-all">
+                    <span className="px-3 py-1.5 rounded-full bg-muted border border-border text-[10px] font-bold uppercase tracking-widest text-foreground shadow-lg group-hover:bg-brand-orange/20 group-hover:border-brand-orange/40 group-hover:text-brand-orange transition-all">
                       Ages {tier.age}
                     </span>
                   </div>
@@ -184,11 +185,11 @@ export default function Home() {
                     {tier.visual}
                   </div>
 
-                  <div className="mt-auto pt-6 border-t border-white/5">
+                  <div className="mt-auto pt-6 border-t border-border">
                     <h3 className="text-2xl md:text-3xl font-medium mb-2 tracking-tight">
                       {tier.name}
                     </h3>
-                    <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">
+                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed font-light">
                       {tier.desc}
                     </p>
                   </div>
@@ -201,7 +202,7 @@ export default function Home() {
           <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex">
             <button
               onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
+              className="w-12 h-12 rounded-full bg-background/50 backdrop-blur-md border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300 hover:scale-110 active:scale-95 shadow-2xl"
             >
               <ChevronRight size={24} />
             </button>
@@ -215,7 +216,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-6xl font-medium mb-6 tracking-tighter">
             Our Core Identity
           </h2>
-          <p className="text-lg md:text-2xl text-zinc-400 font-light leading-normal">
+          <p className="text-lg md:text-2xl text-muted-foreground font-light leading-normal">
             Inner Circle is not just a community; it is a creative platform and
             legacy-building social impact engine.
           </p>
@@ -223,7 +224,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]">
           {/* LARGE CARD */}
-          <div className="md:col-span-2 row-span-1 md:row-span-2 group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-brand-orange/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[300px]">
+          <div className="md:col-span-2 row-span-1 md:row-span-2 group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-orange/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[300px]">
             <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
               <div className="absolute top-10 right-10 w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1),transparent_70%)]" />
               <svg className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
@@ -249,10 +250,10 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center mb-4 text-brand-orange border border-brand-orange/20">
                 <Users size={24} />
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-foreground mb-3 tracking-tight">
                 Community of Shared Growth
               </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-md font-light">
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
                 A space where connection transcends time, providing mentorship
                 and opportunities across generations.
               </p>
@@ -260,36 +261,36 @@ export default function Home() {
           </div>
 
           {/* SMALL CARDS */}
-          <div className="group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-brand-yellow/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
+          <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-brand-yellow/30 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
             <div className="w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow border border-brand-yellow/20">
               <Layers size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-white mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-foreground mb-2 tracking-tight">
                 Storytelling Ecosystem
               </h3>
-              <p className="text-zinc-500 text-xs leading-relaxed">
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Where stories become lessons and content becomes legacy.
               </p>
             </div>
           </div>
 
-          <div className="group relative p-8 rounded-[2rem] bg-[#0A0A0A] border border-white/5 hover:border-white/20 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/10">
+          <div className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-muted-foreground/20 overflow-hidden transition-all duration-700 flex flex-col justify-between min-h-[200px]">
+            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-foreground border border-border">
               <Target size={20} />
             </div>
             <div className="relative z-10 mt-4">
-              <h3 className="text-xl font-medium text-white mb-2 tracking-tight">
+              <h3 className="text-xl font-medium text-foreground mb-2 tracking-tight">
                 Impact Engine
               </h3>
-              <p className="text-zinc-500 text-xs leading-relaxed">
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Legacy-building initiatives driven by social impact.
               </p>
             </div>
           </div>
 
           {/* WIDE CARD */}
-          <div className="md:col-span-3 group relative p-8 rounded-[2rem] bg-gradient-to-r from-[#0A0A0A] to-[#111] border border-white/5 hover:border-brand-orange/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="md:col-span-3 group relative p-8 rounded-[2rem] bg-gradient-to-r from-card to-card/50 border border-border hover:border-brand-orange/30 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="absolute right-[-10%] top-[-50%] w-[400px] h-[400px] bg-brand-orange/5 rounded-full blur-[100px]" />
             <div className="flex-1 relative z-10">
               <div className="flex items-center gap-3 mb-3">
@@ -298,10 +299,10 @@ export default function Home() {
                   Global Vision
                 </span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-medium text-white mb-3 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-medium text-foreground mb-3 tracking-tight">
                 A Multi-Generational Movement
               </h3>
-              <p className="text-zinc-400 text-base md:text-lg max-w-2xl font-light">
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl font-light">
                 To bridge generations, providing access, mentorship, and
                 belonging that transcend time.
               </p>

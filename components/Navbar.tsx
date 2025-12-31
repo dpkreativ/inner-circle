@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface NavItem {
   name: string;
@@ -52,7 +53,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent backdrop-blur-sm transition-all duration-300">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-8 md:py-6 flex justify-between items-center bg-gradient-to-b from-background/90 to-transparent backdrop-blur-sm transition-all duration-300">
         <Link href="/" className="relative z-50">
           {/* LOGO CONTAINER */}
           <div className="relative w-28 h-10 md:w-36 md:h-12 hover:opacity-80 transition-opacity">
@@ -60,7 +61,7 @@ export default function Navbar() {
               src="/images/logo-white.png"
               alt="Inner Circle Logo"
               fill={true}
-              className="object-contain object-left"
+              className="object-contain object-left invert dark:invert-0"
               priority
               unoptimized
             />
@@ -84,7 +85,9 @@ export default function Navbar() {
                 <Link
                   href={item.path}
                   className={`relative z-10 text-sm font-medium tracking-wide transition-colors flex items-center gap-1 ${
-                    isActive ? "text-white" : "text-zinc-400 hover:text-white"
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -114,7 +117,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 min-w-[200px] bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+                        className="absolute top-full left-0 mt-2 min-w-[200px] bg-popover/95 backdrop-blur-md border border-border rounded-2xl overflow-hidden shadow-2xl"
                       >
                         {item.children!.map((child) => {
                           const isChildActive = pathname === child.path;
@@ -125,7 +128,7 @@ export default function Navbar() {
                               className={`block px-6 py-3 text-sm transition-colors ${
                                 isChildActive
                                   ? "bg-brand-orange/10 text-brand-orange"
-                                  : "text-zinc-400 hover:text-white hover:bg-white/5"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
                               }`}
                             >
                               {child.name}
@@ -141,10 +144,14 @@ export default function Navbar() {
           })}
         </ul>
 
+        <div className="hidden lg:flex items-center gap-4">
+          <ThemeToggle />
+        </div>
+
         {/* MOBILE TOGGLE BUTTON */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden relative z-50 p-2 text-white hover:text-brand-orange transition-colors"
+          className="lg:hidden relative z-50 p-2 text-foreground hover:text-brand-orange transition-colors"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -157,7 +164,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-[#050505] flex flex-col justify-center px-8"
+            className="fixed inset-0 z-40 bg-background flex flex-col justify-center px-8"
           >
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
@@ -182,7 +189,7 @@ export default function Navbar() {
                       className={`group flex items-center justify-between text-2xl font-medium tracking-tight py-2 border-b border-white/5 ${
                         isActive
                           ? "text-brand-orange"
-                          : "text-zinc-400 hover:text-white"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
                       <span>{item.name}</span>
@@ -206,7 +213,7 @@ export default function Navbar() {
                                 className={`block text-sm py-2 px-4 rounded-lg transition-colors ${
                                   isChildActive
                                     ? "bg-brand-orange/10 text-brand-orange"
-                                    : "text-zinc-500 hover:text-white hover:bg-white/5"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                                 }`}
                               >
                                 {child.name}
@@ -219,6 +226,12 @@ export default function Navbar() {
                   </motion.li>
                 );
               })}
+              <div className="relative z-10 mt-6 px-4">
+                <div className="flex items-center justify-between text-muted-foreground">
+                  <span>Theme</span>
+                  <ThemeToggle />
+                </div>
+              </div>
             </ul>
 
             {/* Footer info */}
@@ -228,7 +241,7 @@ export default function Navbar() {
               transition={{ delay: 0.5 }}
               className="absolute bottom-10 left-0 w-full text-center"
             >
-              <p className="text-zinc-600 text-xs font-mono uppercase tracking-widest">
+              <p className="text-muted-foreground text-xs font-mono uppercase tracking-widest">
                 Inner Circle Brand Guide
               </p>
             </motion.div>
