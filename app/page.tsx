@@ -419,31 +419,31 @@ const brandPillars = [
 ];
 
 const tiers = [
-  {
-    name: "Smallies",
-    age: "7-12",
-    icon: Sparkles,
-    desc: "The youngest seeds of our community. Learning early, dreaming big, and starting their journey.",
-    gradient: "from-blue-500/20 to-transparent",
-    visual: (
-      <div className="flex gap-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-[40px]" />
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{ y: [0, -40, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.3,
-              ease: "easeInOut",
-            }}
-            className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-          />
-        ))}
-      </div>
-    ),
-  },
+  // {
+  //   name: "Smallies",
+  //   age: "7-12",
+  //   icon: Sparkles,
+  //   desc: "The youngest seeds of our community. Learning early, dreaming big, and starting their journey.",
+  //   gradient: "from-blue-500/20 to-transparent",
+  //   visual: (
+  //     <div className="flex gap-4">
+  //       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-[40px]" />
+  //       {[...Array(3)].map((_, i) => (
+  //         <motion.div
+  //           key={i}
+  //           animate={{ y: [0, -40, 0] }}
+  //           transition={{
+  //             duration: 2,
+  //             repeat: Infinity,
+  //             delay: i * 0.3,
+  //             ease: "easeInOut",
+  //           }}
+  //           className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
+  //         />
+  //       ))}
+  //     </div>
+  //   ),
+  // },
   {
     name: "Trailblazers",
     age: "13-24",
