@@ -76,7 +76,6 @@ export default function Footer() {
               <FooterLink href="/events/inner-circle-connect#join">
                 Join Your Band
               </FooterLink>
-              <FooterLink href="/brand/merch">Merchandise store</FooterLink>
             </ul>
           </div>
 
@@ -88,15 +87,27 @@ export default function Footer() {
             <p className="text-zinc-500 mb-4 font-light text-xs leading-relaxed">
               Receive updates on upcoming events and community stories.
             </p>
-            <form className="flex gap-2">
+            <form
+              className="flex gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                // Placeholder for form submission logic
+                const formData = new FormData(e.currentTarget);
+                const email = formData.get("email");
+                console.log("Newsletter subscription for:", email);
+              }}
+            >
               <input
                 type="email"
+                name="email"
                 placeholder="Email address"
+                required
                 className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 flex-grow text-white placeholder:text-zinc-600 focus:outline-none focus:border-brand-orange/50 focus:ring-1 focus:ring-brand-orange/50 transition-all"
               />
               <button
-                type="button"
-                className="bg-white text-black p-2 rounded-lg hover:bg-brand-orange hover:text-white transition-colors"
+                type="submit"
+                className="bg-zinc-100 text-black p-2 rounded-lg hover:bg-brand-orange hover:text-white transition-colors"
+                aria-label="Subscribe"
               >
                 <ArrowRight size={18} />
               </button>

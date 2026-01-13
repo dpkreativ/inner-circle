@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import { AnimatedBackground } from "@/components/common/AnimatedBackground";
 
