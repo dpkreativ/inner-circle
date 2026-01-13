@@ -8,15 +8,14 @@ import {
   Target,
   Layers,
   Globe,
-  Sparkles,
   Zap,
-  Mic,
   Crown,
   Sun,
-  Anchor,
   ChevronLeft,
   ChevronRight,
   Calendar,
+  Brain,
+  Landmark,
 } from "lucide-react";
 import { useRef } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
@@ -366,7 +365,7 @@ export default function Home() {
                 share wisdom, and build lasting relationships across age groups.
               </p>
 
-              <Link href="/connect">
+              <Link href="/events/inner-circle-connect">
                 <button className="group px-8 py-4 bg-foreground text-background dark:bg-white dark:text-black rounded-full font-bold hover:bg-brand-orange hover:text-white dark:hover:bg-brand-orange dark:hover:text-white transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                   <span>Learn More About Connect</span>
                   <ArrowRight
@@ -420,85 +419,38 @@ const brandPillars = [
 
 const tiers = [
   {
-    name: "Smallies",
-    age: "7-12",
-    icon: Sparkles,
-    desc: "The youngest seeds of our community. Learning early, dreaming big, and starting their journey.",
-    gradient: "from-blue-500/20 to-transparent",
-    visual: (
-      <div className="flex gap-4">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-[40px]" />
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{ y: [0, -40, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.3,
-              ease: "easeInOut",
-            }}
-            className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-          />
-        ))}
-      </div>
-    ),
-  },
-  {
     name: "Trailblazers",
     age: "13-24",
     icon: Zap,
     desc: "The energetic future. High school and university students ready to challenge the norm.",
     gradient: "from-brand-yellow/20 to-transparent",
     visual: (
-      <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
-        <div className="absolute inset-0 bg-brand-yellow/10 rounded-full blur-[50px]" />
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[0_0_15px_rgba(234,179,8,0.5)]"
-        >
-          <motion.path
-            d="M55 5L20 50H55L45 95L80 40H55L55 5Z"
-            stroke="#EAB308"
-            strokeWidth="3"
-            fill="rgba(234, 179, 8, 0.1)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            transition={{
-              duration: 1.2,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        </svg>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+        <Image
+          src="/images/tier-trailblazers.jpg"
+          alt="Trailblazers"
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply" />
       </div>
     ),
   },
   {
     name: "Creatives",
     age: "25-40",
-    icon: Mic,
+    icon: Brain,
     desc: "The engine room. Young professionals and artists building careers and shaping culture.",
     gradient: "from-brand-orange/20 to-transparent",
     visual: (
-      <div className="relative w-32 h-32 md:w-48 md:h-48 flex items-center justify-center">
-        <div className="absolute inset-0 bg-brand-orange/10 rounded-full blur-[50px]" />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="relative w-24 h-24 md:w-40 md:h-40 border-2 border-brand-orange/40 rounded-3xl"
-        >
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-4 border-2 border-white/20 rounded-2xl"
-          />
-          <div className="absolute inset-12 bg-brand-orange/20 backdrop-blur-md rounded-xl border border-brand-orange/50" />
-        </motion.div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+        <Image
+          src="/images/tier-creatives.jpg"
+          alt="Creatives"
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply" />
       </div>
     ),
   },
@@ -509,40 +461,32 @@ const tiers = [
     desc: "Established leaders. Shining light on paths for others and solidifying their impact.",
     gradient: "from-purple-500/20 to-transparent",
     visual: (
-      <div className="relative flex items-center justify-center w-full h-full">
-        <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-[60px]" />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="w-24 h-24 md:w-40 md:h-40 rounded-full border border-dashed border-purple-400/50"
+      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+        <Image
+          src="/images/tier-luminaries.jpg"
+          alt="Luminaries"
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
         />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="absolute w-16 h-16 md:w-20 md:h-20 bg-purple-500/30 rounded-full blur-xl"
-        />
-        <div className="absolute w-8 h-8 md:w-12 md:h-12 bg-white rounded-full shadow-[0_0_30px_rgba(255,255,255,0.8)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply" />
       </div>
     ),
   },
   {
     name: "Pillars",
     age: "56-65",
-    icon: Anchor,
-    desc: "The structural support. providing stability, wisdom, and governance to the circle.",
+    icon: Landmark,
+    desc: "The structural support. Providing stability, wisdom, and governance to the circle.",
     gradient: "from-emerald-500/20 to-transparent",
     visual: (
-      <div className="flex gap-4 items-end h-32 md:h-40 w-full justify-center">
-        <div className="absolute inset-0 bg-emerald-500/10 blur-[50px]" />
-        {[40, 80, 60, 90, 50].map((h, i) => (
-          <motion.div
-            key={i}
-            initial={{ height: 0 }}
-            whileInView={{ height: `${h}%` }}
-            transition={{ duration: 1.5, delay: i * 0.1 }}
-            className="w-4 md:w-6 bg-gradient-to-t from-emerald-500/60 to-emerald-300/20 rounded-t-lg border-t border-emerald-400/50"
-          />
-        ))}
+      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+        <Image
+          src="/images/tier-pillars.jpg"
+          alt="Pillars"
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply" />
       </div>
     ),
   },

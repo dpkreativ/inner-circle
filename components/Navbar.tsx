@@ -17,18 +17,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: "Home", path: "/" },
   { name: "About Us", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  {
-    name: "Brand Guide",
-    path: "/brand",
-    children: [
-      { name: "Logo", path: "/brand/logo" },
-      { name: "Colors", path: "/brand/colors" },
-      { name: "Typography", path: "/brand/typography" },
-      { name: "Merch", path: "/brand/merch" },
-    ],
-  },
-  { name: "Inner Circle Connect", path: "/connect" },
+  { name: "Events", path: "/events" },
 ];
 
 export default function Navbar() {

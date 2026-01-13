@@ -2,106 +2,134 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Instagram, Twitter, Linkedin, Mail, ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-          {/* Logo & Description */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
-              <div className="relative w-36 h-12">
+    <footer className="bg-black border-t border-white/5 text-sm">
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+          {/* BRAND COLUMN (4 cols) */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link href="/" className="inline-block">
+              <div className="relative w-96 h-20">
                 <Image
                   src="/images/logo-white.png"
                   alt="Inner Circle Logo"
-                  fill={true}
+                  fill
                   className="object-contain object-left"
                   unoptimized
                 />
               </div>
             </Link>
-            <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
-              A multi-generational ecosystem where stories, community, and
-              purpose become legacy. Your Life Concierge for growth, clarity,
-              and impact.
+            <p className="text-zinc-400 leading-relaxed font-light">
+              Your Life Concierge for growth, clarity, and legacy. Connecting
+              Trailblazers, Builders, and Legends across generations.
             </p>
+            <div className="flex items-center gap-4 text-zinc-400">
+              <SocialLink
+                href="#"
+                icon={<Instagram size={20} />}
+                label="Instagram"
+              />
+              <SocialLink
+                href="#"
+                icon={<Twitter size={20} />}
+                label="Twitter"
+              />
+              <SocialLink
+                href="#"
+                icon={<Linkedin size={20} />}
+                label="LinkedIn"
+              />
+              <SocialLink
+                href="mailto:hello@innercircle.com"
+                icon={<Mail size={20} />}
+                label="Email"
+              />
+            </div>
           </div>
 
-          {/* Navigation Sections */}
-          <div>
-            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              About
-            </h3>
-            <ul className="space-y-3">
-              {aboutLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    className="text-zinc-400 hover:text-white transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+          {/* SITEMAP (2 cols) */}
+          <div className="lg:col-span-2 lg:col-start-6">
+            <h4 className="font-bold text-white uppercase tracking-widest text-xs mb-6">
+              Explore
+            </h4>
+            <ul className="space-y-4">
+              <FooterLink href="/about">About Us</FooterLink>
+              <FooterLink href="/mission">Our Mission</FooterLink>
+              <FooterLink href="/organization">Organization</FooterLink>
+              <FooterLink href="/projects">Projects</FooterLink>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              Brand Guide
-            </h3>
-            <ul className="space-y-3">
-              {brandLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    className="text-zinc-400 hover:text-white transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+          {/* COMMUNITY (3 cols) */}
+          <div className="lg:col-span-2">
+            <h4 className="font-bold text-white uppercase tracking-widest text-xs mb-6">
+              Community
+            </h4>
+            <ul className="space-y-4">
+              <FooterLink href="/events">Upcoming Events</FooterLink>
+              <FooterLink href="/events/inner-circle-connect">
+                Inner Circle Connect
+              </FooterLink>
+              <FooterLink href="/events/inner-circle-connect#join">
+                Join Your Band
+              </FooterLink>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white font-bold text-sm uppercase tracking-wider mb-4">
-              Connect
-            </h3>
-            <ul className="space-y-3">
-              {connectLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    className="text-zinc-400 hover:text-white transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* NEWSLETTER (3 cols) */}
+          <div className="lg:col-span-2">
+            <h4 className="font-bold text-white uppercase tracking-widest text-xs mb-6">
+              Stay Connected
+            </h4>
+            <p className="text-zinc-500 mb-4 font-light text-xs leading-relaxed">
+              Receive updates on upcoming events and community stories.
+            </p>
+            <form
+              className="flex gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                // Placeholder for form submission logic
+                const formData = new FormData(e.currentTarget);
+                const email = formData.get("email");
+                console.log("Newsletter subscription for:", email);
+              }}
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                required
+                className="bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 flex-grow text-white placeholder:text-zinc-600 focus:outline-none focus:border-brand-orange/50 focus:ring-1 focus:ring-brand-orange/50 transition-all"
+              />
+              <button
+                type="submit"
+                className="bg-zinc-100 text-black p-2 rounded-lg hover:bg-brand-orange hover:text-white transition-colors"
+                aria-label="Subscribe"
+              >
+                <ArrowRight size={18} />
+              </button>
+            </form>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-zinc-500 text-xs">
-            © {new Date().getFullYear()} Inner Circle. All rights reserved.
-          </p>
+        {/* BOTTOM BAR */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
+          <p>© {new Date().getFullYear()} Inner Circle. All rights reserved.</p>
           <div className="flex gap-6">
             <Link
-              href="/mission"
-              className="text-zinc-500 hover:text-white transition-colors text-xs"
+              href="/privacy"
+              className="hover:text-zinc-300 transition-colors"
             >
-              Mission
+              Privacy Policy
             </Link>
             <Link
-              href="/organization"
-              className="text-zinc-500 hover:text-white transition-colors text-xs"
+              href="/terms"
+              className="hover:text-zinc-300 transition-colors"
             >
-              Organization
+              Terms of Service
             </Link>
           </div>
         </div>
@@ -110,24 +138,57 @@ export default function Footer() {
   );
 }
 
-// Navigation Data
-const aboutLinks = [
-  { name: "About Us", path: "/about" },
-  { name: "Mission", path: "/mission" },
-  { name: "Organization", path: "/organization" },
-  { name: "Projects", path: "/projects" },
-];
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li>
+      <Link
+        href={href}
+        className="text-zinc-400 hover:text-white hover:translate-x-1 transition-all inline-block duration-200"
+      >
+        {children}
+      </Link>
+    </li>
+  );
+}
 
-const brandLinks = [
-  { name: "Brand Overview", path: "/brand" },
-  { name: "Logo", path: "/brand/logo" },
-  { name: "Colors", path: "/brand/colors" },
-  { name: "Typography", path: "/brand/typography" },
-  { name: "Merchandise", path: "/brand/merch" },
-];
+function SocialLink({
+  href,
+  icon,
+  label,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  const isPlaceholder = href === "#" || !href;
 
-const connectLinks = [
-  { name: "Inner Circle Connect", path: "/connect" },
-  { name: "Join Your Band", path: "/connect#join" },
-  { name: "Register for Event", path: "/connect#register" },
-];
+  if (isPlaceholder) {
+    return (
+      <span
+        aria-label={label}
+        aria-disabled="true"
+        className="p-2 bg-zinc-900 rounded-full text-zinc-600 cursor-not-allowed opacity-50"
+      >
+        {icon}
+      </span>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="p-2 bg-zinc-900 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+    >
+      {icon}
+    </a>
+  );
+}
