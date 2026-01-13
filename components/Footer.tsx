@@ -166,9 +166,25 @@ function SocialLink({
   icon: React.ReactNode;
   label: string;
 }) {
+  const isPlaceholder = href === "#" || !href;
+
+  if (isPlaceholder) {
+    return (
+      <span
+        aria-label={label}
+        aria-disabled="true"
+        className="p-2 bg-zinc-900 rounded-full text-zinc-600 cursor-not-allowed opacity-50"
+      >
+        {icon}
+      </span>
+    );
+  }
+
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label={label}
       className="p-2 bg-zinc-900 rounded-full hover:bg-white hover:text-black transition-all duration-300"
     >

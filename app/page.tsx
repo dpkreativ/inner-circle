@@ -476,7 +476,7 @@ const tiers = [
     name: "Pillars",
     age: "56-65",
     icon: Landmark,
-    desc: "The structural support. providing stability, wisdom, and governance to the circle.",
+    desc: "The structural support. Providing stability, wisdom, and governance to the circle.",
     gradient: "from-emerald-500/20 to-transparent",
     visual: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
